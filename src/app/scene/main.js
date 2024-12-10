@@ -9,8 +9,8 @@ import { getCameraList } from "../helpers/CameraHelper.js";
 import PositionAlongPathState from "../helpers/PositionAlongPathState.js";
 import { handleScroll, updatePosition} from '../helpers/PositionAlongPathMethods.js'
 
-const scenePath = "/hallway.glb";
-const curvePath = "/path.json";
+const scenePath = "./hallway.glb";
+const curvePath = "./path.json";
 
 export default function Scene() {
   const mountRef = useRef(null);
