@@ -4,8 +4,8 @@ class PositionAlongPathState {
         this.currentDistanceOnPath = 0.0001;
         this.currentPercentageOnPath = 0.0001;
         this.targetDistance = 0;
-        this.movementDuration = 1000; // how long it should take 
-        this.lengthToScroll = 100; //How many scroll ticks are required to complete the loop. 
+        this.movementDuration = 1500; // Más tiempo para animación suave
+        this.lengthToScroll = 200; // Más desplazamiento para completar un ciclo
         this.lastScrollTime = 0;
     }
 }

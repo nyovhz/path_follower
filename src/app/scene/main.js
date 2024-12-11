@@ -54,17 +54,20 @@ export default function Scene() {
       const renderer = setupRenderer(canvasRef.current);
 
       let positionAlongPathState = new PositionAlongPathState();
-let lastScrollTop = window.scrollY; // Variable para rastrear la última posición de desplazamiento
+      let lastScrollTop = window.scrollY;
+     
+      window.addEventListener('scroll', onScroll, false);
+      function onScroll(event) {
+        const scrollTop = window.scrollY; // Obtener la posición actual
+        const changeInScroll = scrollTop - lastScrollTop; // Calcular el desplazamiento relativo
+        lastScrollTop = scrollTop;
+      
+        // Introducir un factor de escala para suavizar el efecto
+        const scrollFactor = 0.01;
+        handleScroll({ deltaY: changeInScroll * scrollFactor }, positionAlongPathState);
+      }
+      
 
-window.addEventListener('scroll', onScroll, false);
-
-function onScroll(event) {
-  const scrollTop = window.scrollY;
-  const changeInScroll = Math.sign(scrollTop - lastScrollTop); // Determina la dirección del desplazamiento
-  lastScrollTop = scrollTop;
-
-  handleScroll({ deltaY: -changeInScroll }, positionAlongPathState); // Simula un evento `deltaY`
-}
       
       // Animar la escena
       const animate = () => {

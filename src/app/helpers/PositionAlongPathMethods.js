@@ -1,15 +1,12 @@
 
 export function handleScroll(event, positionAlongPathState) {
+    positionAlongPathState.lastScrollTime = performance.now();
 
-	positionAlongPathState.lastScrollTime = performance.now();
-
-	//When a new scroll starts, set the starting distance along the path to whatever the object's current distance is. 
-	positionAlongPathState.startingDistance = positionAlongPathState.currentDistanceOnPath;
-
-	const changeInScroll = Math.sign(-event.deltaY);
-	
-	positionAlongPathState.targetDistance += changeInScroll / positionAlongPathState.lengthToScroll; 
+    // Actualizar distancia objetivo con sensibilidad ajustada
+    positionAlongPathState.startingDistance = positionAlongPathState.currentDistanceOnPath;
+    positionAlongPathState.targetDistance += event.deltaY / positionAlongPathState.lengthToScroll;
 }
+
 
 export function updatePosition(curvePath, object, positionAlongPathState) {
 
