@@ -17,7 +17,7 @@
 body, html{
   margin: 0;
   padding: 0;
-  height: 200%; /* Dobla la altura para forzar el scroll */
+  height: 1000%; /* Dobla la altura para forzar el scroll */
   overflow: scroll;
   -ms-overflow-style: none;  /* Oculta barras en IE y Edge */
   scrollbar-width: none; 
