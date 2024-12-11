@@ -42,7 +42,7 @@ export default function Scene() {
         0.1,
         1000
       );
-
+      
       const cameraList = getCameraList(scene);
       if (cameraList.length > 0) {
         camera.position.copy(cameraList[0].position);
@@ -54,10 +54,17 @@ export default function Scene() {
       const renderer = setupRenderer(canvasRef.current);
 
       let positionAlongPathState = new PositionAlongPathState();
-      window.addEventListener('wheel', onMouseScroll, false);
-      function onMouseScroll(event){
-        handleScroll(event, positionAlongPathState);
-      }
+let lastScrollTop = window.scrollY; // Variable para rastrear la última posición de desplazamiento
+
+window.addEventListener('scroll', onScroll, false);
+
+function onScroll(event) {
+  const scrollTop = window.scrollY;
+  const changeInScroll = Math.sign(scrollTop - lastScrollTop); // Determina la dirección del desplazamiento
+  lastScrollTop = scrollTop;
+
+  handleScroll({ deltaY: -changeInScroll }, positionAlongPathState); // Simula un evento `deltaY`
+}
       
       // Animar la escena
       const animate = () => {
