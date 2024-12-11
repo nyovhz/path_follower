@@ -63,7 +63,7 @@ export default function Scene() {
         lastScrollTop = scrollTop;
       
         // Introducir un factor de escala para suavizar el efecto
-        const scrollFactor = 0.01;
+        const scrollFactor = 0.002;
         handleScroll({ deltaY: -changeInScroll * scrollFactor }, positionAlongPathState);
       }
       
